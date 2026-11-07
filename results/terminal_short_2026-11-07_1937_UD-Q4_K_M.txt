@@ -1,0 +1,41 @@
+# terminal_short
+README の6ターン（作成、サイズ、削除）を機械採点する
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 6/6  first_failure: None
+
+===== Turn 1: mkdir  PASS =====
+[23.2秒, 生成610トークン, 26.3 tok/s, 思考2071文字, prompt 3148 tok, finish=stop]
+root@demo:/app# mkdir project && cd project
+root@demo:/app/project#
+
+===== Turn 2: write  PASS =====
+[26.4秒, 生成742トークン, 28.2 tok/s, 思考2525文字, prompt 3232 tok, finish=stop]
+root@demo:/app/project# echo 'hello world' > greeting.txt
+root@demo:/app/project#
+
+===== Turn 3: ls  PASS =====
+[202.0秒, 生成5722トークン, 28.3 tok/s, 思考14903文字, prompt 3315 tok, finish=stop]
+root@demo:/app/project# ls -la
+total 12
+drwxr-xr-x 2 root root 4096 Oct 24 04:03 .
+drwxr-xr-x 1 root root 4096 Oct 24 04:03 ..
+-rw-r--r-- 1 root root   12 Oct 24 04:03 greeting.txt
+root@demo:/app/project#
+
+===== Turn 4: wc  PASS =====
+[19.3秒, 生成516トークン, 26.7 tok/s, 思考1425文字, prompt 3483 tok, finish=stop]
+root@demo:/app/project# cat greeting.txt | wc -c
+12
+root@demo:/app/project#
+
+===== Turn 5: rm  PASS =====
+[26.4秒, 生成759トークン, 28.8 tok/s, 思考2145文字, prompt 3568 tok, finish=stop]
+root@demo:/app/project# rm greeting.txt
+root@demo:/app/project#
+
+===== Turn 6: cat gone  PASS =====
+[28.9秒, 生成828トークン, 28.6 tok/s, 思考2564文字, prompt 3646 tok, finish=stop]
+root@demo:/app/project# cat greeting.txt
+cat: greeting.txt: No such file or directory
+root@demo:/app/project#

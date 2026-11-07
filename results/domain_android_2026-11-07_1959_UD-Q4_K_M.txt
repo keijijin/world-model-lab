@@ -1,0 +1,30 @@
+# domain_android
+ノートの新規作成、入力、保存、開き直し
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 3/4  first_failure: 4
+
+===== Turn 1: new  PASS =====
+[103.7秒, 生成2973トークン, 28.7 tok/s, 思考9226文字, prompt 686 tok, finish=stop]
+[  0] | android.widget.ImageView | contentDescription="Back" | bounds=[40,100][200,200] | clickable
+[  1] | android.widget.TextView | text="Untitled note" | bounds=[200,100][800,200]
+[  2] | android.widget.EditText | text="" | bounds=[40,260][1000,1900] | editable | focused
+[  3] | android.widget.Button | text="Save" | bounds=[760,100][1000,200] | clickable
+
+===== Turn 2: type  PASS =====
+[136.7秒, 生成3956トークン, 28.9 tok/s, 思考11780文字, prompt 974 tok, finish=stop]
+[  0] | android.widget.EditText | text="Kepler note" hint="Title" | bounds=[40,200][1000,320] | editable | focused
+[  1] | android.widget.Button | text="Save" | bounds=[800,400][1000,520] | clickable
+
+===== Turn 3: save  PASS =====
+[177.5秒, 生成5098トークン, 28.7 tok/s, 思考13891文字, prompt 1191 tok, finish=stop]
+[  0] | android.widget.TextView | text="Notes" | bounds=[40,100][500,200]
+[  1] | android.widget.TextView | text="Kepler note" | bounds=[40,260][800,360]
+[  2] | android.widget.Button | text="New note" | bounds=[760,2000][1000,2160] | clickable
+
+===== Turn 4: reopen  FAIL =====
+[289.8秒, 生成8192トークン, 28.3 tok/s, 思考25143文字, prompt 1513 tok, finish=length]
+! 観測が空
+! 欠落: 'android.widget.EditText'
+! 欠落: 'text="Kepler note"'
+! max_tokens で打ち切り

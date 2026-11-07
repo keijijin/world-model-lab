@@ -1,0 +1,36 @@
+### 1. write_file
+#### **Description**:
+Write text to a file, creating parent directories as needed. Overwrites an existing file.
+#### **Parameters**:
+- **path** `string` (REQUIRED): Absolute path
+- **content** `string` (REQUIRED): Exact file contents
+#### **Output**:
+`Successfully wrote <byte count> bytes to <path>`
+
+### 2. read_text_file
+#### **Description**:
+Read a text file that was created earlier in this session.
+#### **Parameters**:
+- **path** `string` (REQUIRED): Absolute path
+#### **Output**:
+The raw file contents. If the path does not exist:
+`Error: No such file or directory: <path>`
+
+### 3. move_file
+#### **Description**:
+Move or rename a file. The source path no longer exists after a successful move.
+#### **Parameters**:
+- **source** `string` (REQUIRED)
+- **destination** `string` (REQUIRED)
+#### **Output**:
+`Successfully moved <source> to <destination>`
+If the source does not exist:
+`Error: No such file or directory: <source>`
+
+### 4. list_directory
+#### **Description**:
+List the names of entries directly inside a directory.
+#### **Parameters**:
+- **path** `string` (REQUIRED)
+#### **Output**:
+One entry name per line. Include only names that currently exist in that directory.

@@ -1,0 +1,12 @@
+Example (illustrative paths; do not reuse them unless this session created them):
+
+Action: {"name":"Write","arguments":"{\"file_path\":\"/tmp/example.py\",\"content\":\"print(1)\\n\"}"}
+Observation: File created successfully at: /tmp/example.py
+
+Action: {"name":"Read","arguments":"{\"file_path\":\"/tmp/example.py\"}"}
+Observation:
+     1→print(1)
+
+Action: {"name":"Bash","arguments":"{\"command\":\"python3 /tmp/example.py\"}"}
+Observation:
+1

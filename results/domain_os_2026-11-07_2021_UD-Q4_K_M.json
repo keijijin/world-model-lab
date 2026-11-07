@@ -1,0 +1,58 @@
+{
+  "id": "domain_os",
+  "description": "表計算のセルを更新し、隣のセルが残るか見る",
+  "model": "Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf",
+  "quant": "UD-Q4_K_M",
+  "temperature": 0.6,
+  "seed": 1,
+  "started": "2026-11-07T20:18:12",
+  "finished": "2026-11-07T20:21:57",
+  "passed": 3,
+  "total": 3,
+  "first_failure": null,
+  "failed_turns": [],
+  "turns": [
+    {
+      "n": 1,
+      "name": "set A1",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 1\n**Task Instruction:**\nEdit the open spreadsheet.\n\n**Current State:**\ntag\tname\ttext\tclass\tdescription\tposition (top-left x&y)\tsize (w&h)\nlabel\tA1\t\tcell\t\t(120, 240)\t(80, 24)\nlabel\tB1\t\tcell\t\t(220, 240)\t(80, 24)\npush-button\tSave\tSave\tbutton\t\t(120, 400)\t(80, 30)\n\n**Action:**\n```text\nCalcTools.set_cell_value(cell='A1', value='42')\n```\n",
+      "seconds": 152.4,
+      "completion_tokens": 4341,
+      "prompt_tokens": 1074,
+      "tokens_per_sec": 28.5,
+      "thinking_chars": 9271,
+      "finish_reason": "stop",
+      "observation": "tag\tname\ttext\tclass\tdescription\tposition (top-left x&y)\tsize (w&h)\nlabel\tA1\t42\tcell\t\t(120, 240)\t(80, 24)\nlabel\tB1\t\tcell\t\t(220, 240)\t(80, 24)\npush-button\tSave\tSave\tbutton\t\t(120, 400)\t(80, 30)"
+    },
+    {
+      "n": 2,
+      "name": "set B1",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 2\n**Task Instruction:**\nEdit the open spreadsheet.\n\n**Current State:**\ntag\tname\ttext\tclass\tdescription\tposition (top-left x&y)\tsize (w&h)\nlabel\tA1\t42\tcell\t\t(120, 240)\t(80, 24)\nlabel\tB1\t\tcell\t\t(220, 240)\t(80, 24)\npush-button\tSave\tSave\tbutton\t\t(120, 400)\t(80, 30)\n\n**Action:**\n```text\nCalcTools.set_cell_value(cell='B1', value='7')\n```\n",
+      "seconds": 36.1,
+      "completion_tokens": 1020,
+      "prompt_tokens": 1427,
+      "tokens_per_sec": 28.3,
+      "thinking_chars": 1771,
+      "finish_reason": "stop",
+      "observation": "tag\tname\ttext\tclass\tdescription\tposition (top-left x&y)\tsize (w&h)\nlabel\tA1\t42\tcell\t\t(120, 240)\t(80, 24)\nlabel\tB1\t7\tcell\t\t(220, 240)\t(80, 24)\npush-button\tSave\tSave\tbutton\t\t(120, 400)\t(80, 30)"
+    },
+    {
+      "n": 3,
+      "name": "overwrite A1",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 3\n**Task Instruction:**\nEdit the open spreadsheet.\n\n**Current State:**\ntag\tname\ttext\tclass\tdescription\tposition (top-left x&y)\tsize (w&h)\nlabel\tA1\t42\tcell\t\t(120, 240)\t(80, 24)\nlabel\tB1\t7\tcell\t\t(220, 240)\t(80, 24)\npush-button\tSave\tSave\tbutton\t\t(120, 400)\t(80, 30)\n\n**Action:**\n```text\nCalcTools.set_cell_value(cell='A1', value='100')\n```\n",
+      "seconds": 37.1,
+      "completion_tokens": 1060,
+      "prompt_tokens": 1781,
+      "tokens_per_sec": 28.5,
+      "thinking_chars": 1830,
+      "finish_reason": "stop",
+      "observation": "tag\tname\ttext\tclass\tdescription\tposition (top-left x&y)\tsize (w&h)\nlabel\tA1\t100\tcell\t\t(120, 240)\t(80, 24)\nlabel\tB1\t7\tcell\t\t(220, 240)\t(80, 24)\npush-button\tSave\tSave\tbutton\t\t(120, 400)\t(80, 30)"
+    }
+  ]
+}

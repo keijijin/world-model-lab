@@ -1,0 +1,15 @@
+### dict_memory
+Persistent key-value store for this session.
+Arguments:
+- **operation**: `add` | `update` | `retrieve` | `retrieve_all` | `remove` | `remove_all`
+- **dict**: object. Required for `add` and `update`.
+- **key_list**: array of strings. Required for `retrieve` and `remove`.
+
+Outputs:
+- add: `Successfully added items of [<keys>] to memory.`
+- update: `Successfully updated items of [<keys>] in memory.`
+- retrieve: one line per key, `<key>: <value>`. Missing keys use `<key>: Key not found`. Return the exact value stored earlier.
+- remove: `Successfully removed items of [<keys>] from memory.`
+- remove_all: `Successfully cleared all memory.`
+
+`web_search` and `web_extractor` keep the argument and output formats defined above.

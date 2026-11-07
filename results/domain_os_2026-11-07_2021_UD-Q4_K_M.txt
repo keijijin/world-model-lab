@@ -1,0 +1,26 @@
+# domain_os
+表計算のセルを更新し、隣のセルが残るか見る
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 3/3  first_failure: None
+
+===== Turn 1: set A1  PASS =====
+[152.4秒, 生成4341トークン, 28.5 tok/s, 思考9271文字, prompt 1074 tok, finish=stop]
+tag	name	text	class	description	position (top-left x&y)	size (w&h)
+label	A1	42	cell		(120, 240)	(80, 24)
+label	B1		cell		(220, 240)	(80, 24)
+push-button	Save	Save	button		(120, 400)	(80, 30)
+
+===== Turn 2: set B1  PASS =====
+[36.1秒, 生成1020トークン, 28.3 tok/s, 思考1771文字, prompt 1427 tok, finish=stop]
+tag	name	text	class	description	position (top-left x&y)	size (w&h)
+label	A1	42	cell		(120, 240)	(80, 24)
+label	B1	7	cell		(220, 240)	(80, 24)
+push-button	Save	Save	button		(120, 400)	(80, 30)
+
+===== Turn 3: overwrite A1  PASS =====
+[37.1秒, 生成1060トークン, 28.5 tok/s, 思考1830文字, prompt 1781 tok, finish=stop]
+tag	name	text	class	description	position (top-left x&y)	size (w&h)
+label	A1	100	cell		(120, 240)	(80, 24)
+label	B1	7	cell		(220, 240)	(80, 24)
+push-button	Save	Save	button		(120, 400)	(80, 30)

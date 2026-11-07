@@ -1,0 +1,76 @@
+{
+  "id": "domain_web",
+  "description": "フォーム入力、リンク遷移、別 URL への再読込",
+  "model": "Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf",
+  "quant": "UD-Q4_K_M",
+  "temperature": 0.6,
+  "seed": 1,
+  "started": "2026-11-07T19:37:07",
+  "finished": "2026-11-07T19:47:21",
+  "passed": 3,
+  "total": 4,
+  "first_failure": 1,
+  "failed_turns": [
+    1
+  ],
+  "turns": [
+    {
+      "n": 1,
+      "name": "fill",
+      "passed": false,
+      "failures": [
+        "欠落: 'textbox \"Name\" [ref=e5]: Kepler'"
+      ],
+      "user_preview": "### Turn 1\n**Current State:**\n### Page\n- Page URL: http://lab.example/\n- Page Title: Lab Home\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"Lab Home\" [level=1] [ref=e2]\n  - textbox \"Name\" [ref=e5]\n  - link \"Docs\" [ref=e3] [cursor=pointer]:\n    - /url: http://lab.example/docs\n```\n\n**Action:**\n```text\nbrowser_fill_form(fields=[{\"name\": \"Name\", \"ref\": \"e5\", \"type\": \"textbox\", \"value\": \"Kepler\"}])\n```\n",
+      "seconds": 102.9,
+      "completion_tokens": 2954,
+      "prompt_tokens": 981,
+      "tokens_per_sec": 28.7,
+      "thinking_chars": 8612,
+      "finish_reason": "stop",
+      "observation": "### Page\n- Page URL: http://lab.example/\n- Page Title: Lab Home\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"Lab Home\" [level=1] [ref=e2]\n  - textbox \"Name\" [ref=e5] [value=\"Kepler\"]\n  - link \"Docs\" [ref=e3] [cursor=pointer]:\n    - /url: http://lab.example/docs\n```"
+    },
+    {
+      "n": 2,
+      "name": "open docs",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 2\n**Current State:**\n### Page\n- Page URL: http://lab.example/\n- Page Title: Lab Home\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"Lab Home\" [level=1] [ref=e2]\n  - textbox \"Name\" [ref=e5]: Kepler\n  - link \"Docs\" [ref=e3] [cursor=pointer]:\n    - /url: http://lab.example/docs\n```\n\n**Action:**\n```text\nbrowser_click(element=\"Docs\", ref=\"e3\")\n```\n",
+      "seconds": 95.2,
+      "completion_tokens": 2757,
+      "prompt_tokens": 1306,
+      "tokens_per_sec": 29.0,
+      "thinking_chars": 8931,
+      "finish_reason": "stop",
+      "observation": "### Page\n- Page URL: http://lab.example/docs\n- Page Title: Lab Docs\n### Snapshot\n```yaml\n- generic [ref=e6]:\n  - heading \"Documentation\" [level=1] [ref=e7]\n  - link \"Lab Home\" [ref=e8] [cursor=pointer]:\n    - /url: http://lab.example/\n```"
+    },
+    {
+      "n": 3,
+      "name": "navigate home",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 3\n**Current State:**\n### Page\n- Page URL: http://lab.example/docs\n- Page Title: Documentation\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"Documentation\" [level=1] [ref=e2]\n  - link \"Home\" [ref=e3] [cursor=pointer]:\n    - /url: http://lab.example/\n  - paragraph [ref=e4]: Notes about the lab.\n```\n\n**Action:**\n```text\nbrowser_navigate(url=\"http://lab.example/\")\n```\n",
+      "seconds": 217.6,
+      "completion_tokens": 6267,
+      "prompt_tokens": 1576,
+      "tokens_per_sec": 28.8,
+      "thinking_chars": 19550,
+      "finish_reason": "stop",
+      "observation": "### Page\n- Page URL: http://lab.example/\n- Page Title: Lab Home\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"Lab Home\" [level=1] [ref=e2]\n  - textbox \"Name\" [ref=e5]\n  - link \"Docs\" [ref=e3] [cursor=pointer]:\n    - /url: http://lab.example/docs\n```"
+    },
+    {
+      "n": 4,
+      "name": "fill again",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 4\n**Current State:**\n### Page\n- Page URL: http://lab.example/\n- Page Title: Lab Home\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"Lab Home\" [level=1] [ref=e2]\n  - textbox \"Name\" [ref=e5]\n  - link \"Docs\" [ref=e3] [cursor=pointer]:\n    - /url: http://lab.example/docs\n```\n\n**Action:**\n```text\nbrowser_fill_form(fields=[{\"name\": \"Name\", \"ref\": \"e5\", \"type\": \"textbox\", \"value\": \"Galileo\"}])\n```\n",
+      "seconds": 198.7,
+      "completion_tokens": 5723,
+      "prompt_tokens": 1888,
+      "tokens_per_sec": 28.8,
+      "thinking_chars": 16104,
+      "finish_reason": "stop",
+      "observation": "### Page\n- Page URL: http://lab.example/\n- Page Title: Lab Home\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"Lab Home\" [level=1] [ref=e2]\n  - textbox \"Name\" [ref=e5]: Galileo\n  - link \"Docs\" [ref=e3] [cursor=pointer]:\n    - /url: http://lab.example/docs\n```"
+    }
+  ]
+}

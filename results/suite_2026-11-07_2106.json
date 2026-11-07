@@ -1,0 +1,77 @@
+{
+  "model": "Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf",
+  "quant": "UD-Q4_K_M",
+  "scenarios": [
+    {
+      "id": "terminal_short",
+      "passed": 6,
+      "total": 6,
+      "first_failure": null,
+      "failed_turns": []
+    },
+    {
+      "id": "domain_web",
+      "passed": 3,
+      "total": 4,
+      "first_failure": 1,
+      "failed_turns": [
+        1
+      ]
+    },
+    {
+      "id": "domain_android",
+      "passed": 3,
+      "total": 4,
+      "first_failure": 4,
+      "failed_turns": [
+        4
+      ]
+    },
+    {
+      "id": "domain_mcp",
+      "passed": 7,
+      "total": 7,
+      "first_failure": null,
+      "failed_turns": []
+    },
+    {
+      "id": "domain_search",
+      "passed": 7,
+      "total": 8,
+      "first_failure": 8,
+      "failed_turns": [
+        8
+      ]
+    },
+    {
+      "id": "domain_swe",
+      "passed": 8,
+      "total": 8,
+      "first_failure": null,
+      "failed_turns": []
+    },
+    {
+      "id": "domain_os",
+      "passed": 3,
+      "total": 3,
+      "first_failure": null,
+      "failed_turns": []
+    },
+    {
+      "id": "tricky_terminal",
+      "passed": 24,
+      "total": 24,
+      "first_failure": null,
+      "failed_turns": []
+    },
+    {
+      "id": "long_terminal",
+      "passed": 32,
+      "total": 33,
+      "first_failure": 15,
+      "failed_turns": [
+        15
+      ]
+    }
+  ]
+}

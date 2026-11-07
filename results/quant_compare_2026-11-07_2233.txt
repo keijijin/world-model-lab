@@ -1,0 +1,5 @@
+label	file	GiB	load	passed	tok/s	sec/turn	first_failure	reason
+UD-Q4_K_M	UD-Q4_K_M	None	yes	10/10	26.7	44.2	None	起動中のサーバー
+IQ4_XS	UD-IQ4_XS	16.56	yes	10/10	30.0	40.8	None	
+Q5	UD-Q5_K_M	24.64	yes	10/10	26.4	47.1	None	
+Q8	Q8_0	34.37	no					GGUF 34.37 GiB は物理メモリ 36.00 GiB の 80% 以上

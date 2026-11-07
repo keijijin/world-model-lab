@@ -1,0 +1,36 @@
+### 1. Bash
+#### **Description**:
+Run a shell command in the virtual workspace.
+#### **Parameters** (JSON string):
+- **command** `string` (REQUIRED)
+- **description** `string` (optional)
+#### **Output**:
+Plain stdout. On failure, include stderr. No output means an empty observation. Exit status is implied by whether stderr reports an error.
+
+### 2. Read
+#### **Description**:
+Read a workspace file.
+#### **Parameters** (JSON string):
+- **file_path** `string` (REQUIRED)
+#### **Output**:
+Contents with line numbers, `     1→` prefix on the first line. If the file does not exist:
+`Error: File not found: <file_path>`
+
+### 3. Write
+#### **Description**:
+Create or overwrite a file with the exact content argument.
+#### **Parameters** (JSON string):
+- **file_path** `string` (REQUIRED)
+- **content** `string` (REQUIRED)
+#### **Output**:
+`File created successfully at: <file_path>`
+
+### 4. Edit
+#### **Description**:
+Replace old_string with new_string in an existing file. Later Read and Bash calls must observe the new contents.
+#### **Parameters** (JSON string):
+- **file_path** `string` (REQUIRED)
+- **old_string** `string` (REQUIRED)
+- **new_string** `string` (REQUIRED)
+#### **Output**:
+`The file <file_path> has been updated.`

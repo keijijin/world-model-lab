@@ -1,0 +1,28 @@
+---
+description: 言語世界モデルのシナリオ採点で、領域ごとの入力形式と誤判定を繰り返さない
+globs: scenarios/**/*.py,scripts/**/*.py,prompts/**/*.txt
+alwaysApply: false
+---
+
+# 世界モデルの検証
+
+採点は `scenarios/catalog.py` の文字列オラクルで行う。別のモデルによる judge は使わない。温度は 0.6、`seed` は 1。結果の数値は、その 1 回の実行である。
+
+## 入力形式
+
+- Terminal は 1 ターン目だけ `Current State` を置く。ユーザーメッセージは `**Environment Observation:**` で終える。
+- Web / Android / OS は毎ターン、こちらが書いた正解の画面を `Current State` に置く。次の操作の ref や index を、モデルの直前の出力から採らない。
+- MCP / SWE / Search はツール呼び出しの JSON のあとに、ベンチと同じ `<predicted_observation>` の指示を付ける。
+- SWE の `arguments` は JSON オブジェクトではなく JSON 文字列にする。MCP はオブジェクトのまま。
+- 公式の `system_prompt.txt` は書き換えない。`{tool_definitions}` と `{demonstrations}` はシナリオの `system_subs` で埋める。
+
+## 採点で誤らないこと
+
+- ターミナルの観測には、移動前のプロンプトがコマンドエコーとして残る。`root@demo:/app/lab/data#` のような直前プロンプトを exclude すると、`cd` が正しくても落ちる。見るのは最終行のプロンプトである。
+- 思考が `max_tokens` を使い切ると観測が空になる。Android で保存済みノートを開き直すターンは、完了トークンが約 12000 要した。UI シナリオは 16384 を下回らない。
+- 検索結果の `Title:` には ` - Wikipedia` が付く。抽出した本文にその接尾辞が無くても、見出しと数値が一致していれば状態の失敗ではない。
+- 空のテキストボックスに値を入れるとき、モデルは `: Kepler` と `[value="Kepler"]` のどちらも出す。値と Page URL を分けて記録する。
+
+## 量子化
+
+Unsloth のファイル名は IQ4_XS が `UD-IQ4_XS`、Q5 が `UD-Q5_K_M`、Q8 が `Q8_0` である。ファイルサイズが物理メモリの 80% 以上なら `scripts/compare_quants.py` はロードしない。このマシン（36GiB）では `Q8_0`（約 34GiB）が該当する。比較のあと、サーバーは起動前の量子化に戻す。

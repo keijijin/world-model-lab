@@ -1,0 +1,7 @@
+Example (illustrative; do not reuse these paths or contents unless the session created them):
+
+Action: {"name":"write_file","arguments":{"path":"/tmp/example.txt","content":"pebble"}}
+Observation: Successfully wrote 6 bytes to /tmp/example.txt
+
+Action: {"name":"read_text_file","arguments":{"path":"/tmp/example.txt"}}
+Observation: pebble

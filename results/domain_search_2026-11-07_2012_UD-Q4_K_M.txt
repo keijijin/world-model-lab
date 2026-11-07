@@ -1,0 +1,120 @@
+# domain_search
+記憶の更新と、検索結果から本文への引き写し
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 7/8  first_failure: 8
+
+===== Turn 1: remember  PASS =====
+[76.3秒, 生成1702トークン, 22.3 tok/s, 思考5611文字, prompt 7295 tok, finish=stop]
+Successfully added items of [comet, year] to memory.
+
+===== Turn 2: recall mixed  PASS =====
+[26.1秒, 生成712トークン, 27.3 tok/s, 思考1731文字, prompt 7599 tok, finish=stop]
+comet: halley
+missing: Key not found
+
+===== Turn 3: update  PASS =====
+[27.9秒, 生成689トークン, 24.7 tok/s, 思考1653文字, prompt 7978 tok, finish=stop]
+Successfully updated items of [comet] in memory.
+
+===== Turn 4: recall new  PASS =====
+[31.2秒, 生成852トークン, 27.3 tok/s, 思考2021文字, prompt 8359 tok, finish=stop]
+comet: neowise
+
+===== Turn 5: forget  PASS =====
+[24.9秒, 生成665トークン, 26.7 tok/s, 思考1489文字, prompt 8769 tok, finish=stop]
+Successfully removed items of [comet] from memory.
+
+===== Turn 6: recall gone  PASS =====
+[36.7秒, 生成1005トークン, 27.4 tok/s, 思考2263文字, prompt 9176 tok, finish=stop]
+comet: Key not found
+
+===== Turn 7: search light  PASS =====
+[143.1秒, 生成3945トークン, 27.6 tok/s, 思考9915文字, prompt 9620 tok, finish=stop]
+[1] https://en.wikipedia.org/wiki/Speed_of_light
+Title: Speed of light - Wikipedia
+Snippet: The speed of light in vacuum, commonly denoted c, is a universal physical constant exactly equal to 299,792,458 metres per second (approximately 1 billion ...
+
+[2] https://physics.nist.gov/cgi-bin/cuu/Value?%23c
+Title: speed of light in vacuum - CODATA Value - NIST
+Snippet: numerical value of speed of light in vacuum 299 792 458 m s-1. action, copy reference. Click here for correlation coefficient of this constant with other ...
+
+[3] https://www.nist.gov/pml/owm/si-units-length
+Title: SI Units - Length | NIST
+Snippet: The metre is defined by taking the fixed numerical value of the speed of light in vacuum c to be 299792458 when expressed in the unit m s–1, where the ...
+
+[4] https://en.wikipedia.org/wiki/Metre
+Title: Metre - Wikipedia
+Snippet: The metre, symbol m, is the SI unit of length. It is defined by taking the fixed numerical value of the speed of light in vacuum c to be 299792458 when ...
+
+[5] https://www.britannica.com/science/speed-of-light
+Title: Speed of light | Definition, Symbol, Value, & Facts - Britannica
+Snippet: Speed of light, speed at which light waves propagate through different materials. In vacuum, the speed of light is 299,792,458 metres per ...
+
+[6] https://physics.nist.gov/cgi-bin/cuu/Value?c%7Csearch_for=light!in!vacuum!
+Title: speed of light in vacuum - CODATA Value - NIST
+Snippet: speed of light in vacuum $c$ 299792458. m s-1. Note for reference: This is a defined constant. Exact value.
+
+[7] https://physics.stackexchange.com/questions/333309/why-is-the-speed-of-light-in-vacuum-a-constant-and-how-do-we-know-it-is-the-sam
+Title: Why is the speed of light in vacuum a constant and how do we know ...
+Snippet: The speed of light in vacuum is a universal physical constant, denoted c, and is exactly equal to 299,792,458 metres per second.
+
+[8] https://imagine.gsfc.nasa.gov/science/objects/light1.html
+Title: Light - Imagine the Universe! - NASA
+Snippet: Light is a form of energy that travels at a speed of 300,000 kilometers (186,000 miles) per second. That's 186,000 miles in just one second!
+
+[9] https://www.albert.io/blog/speed-of-light-formula-everything-you-need-to-know/
+Title: The Speed of Light Formula: Everything You Need to Know - Albert.io
+Snippet: The speed of light in a vacuum is exactly 299,792,458 meters per second (m/s). This value is a fundamental constant in physics, denoted by the symbol "c."
+Date: N/A
+
+[10] https://units.fandom.com/wiki/Speed_of_light
+Title: Speed of light | Units of Measurement Wiki - Fandom
+Snippet: The speed of light in vacuum, commonly denoted c, is a universal physical constant important in many areas of physics. Its exact value is 299,792,458 metres ...
+
+===== Turn 8: extract light  FAIL =====
+[215.3秒, 生成5812トークン, 27.0 tok/s, 思考20469文字, prompt 10865 tok, finish=stop]
+! 前ターンから引き継げず: 'Speed of light - Wikipedia'
+Jump to content
+
+Main Menu
+
+Main Menu
+
+move to sidebar hide
+
+Search
+
+...
+
+# Speed of light
+
+From Wikipedia, the free encyclopedia
+
+...
+
+The speed of light in vacuum, commonly denoted c, is a universal physical constant exactly equal to 299,792,458 metres per second (approximately 300,000 kilometres per second). It is exact because, by international agreement, a metre is defined as the length of the path travelled by light in vacuum during a time interval of 1/299792458 of a second.
+
+...
+
+## History
+
+[edit]
+
+...
+
+## See also
+
+[edit]
+
+...
+
+## References
+
+[edit]
+
+...
+
+## External links
+
+[edit]

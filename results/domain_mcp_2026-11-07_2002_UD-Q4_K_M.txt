@@ -1,0 +1,34 @@
+# domain_mcp
+ファイルの作成、移動、削除後の参照
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 7/7  first_failure: None
+
+===== Turn 1: write a  PASS =====
+[32.9秒, 生成800トークン, 24.3 tok/s, 思考2205文字, prompt 2243 tok, finish=stop]
+Successfully wrote 11 bytes to /notes/a.txt
+
+===== Turn 2: read a  PASS =====
+[25.1秒, 生成702トークン, 27.9 tok/s, 思考2048文字, prompt 2551 tok, finish=stop]
+alpha-stone
+
+===== Turn 3: write b  PASS =====
+[21.0秒, 生成587トークン, 28.0 tok/s, 思考1406文字, prompt 2804 tok, finish=stop]
+Successfully wrote 10 bytes to /notes/b.txt
+
+===== Turn 4: move  PASS =====
+[26.5秒, 生成747トークン, 28.1 tok/s, 思考2051文字, prompt 3117 tok, finish=stop]
+Successfully moved /notes/a.txt to /notes/c.txt
+
+===== Turn 5: read old  PASS =====
+[36.9秒, 生成1043トークン, 28.3 tok/s, 思考3129文字, prompt 3455 tok, finish=stop]
+Error: No such file or directory: /notes/a.txt
+
+===== Turn 6: read new  PASS =====
+[24.5秒, 生成678トークン, 27.7 tok/s, 思考1853文字, prompt 3777 tok, finish=stop]
+alpha-stone
+
+===== Turn 7: list  PASS =====
+[61.3秒, 生成1746トークン, 28.5 tok/s, 思考4816文字, prompt 4065 tok, finish=stop]
+b.txt
+c.txt

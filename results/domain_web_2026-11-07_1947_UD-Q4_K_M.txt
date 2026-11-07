@@ -1,0 +1,61 @@
+# domain_web
+フォーム入力、リンク遷移、別 URL への再読込
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 3/4  first_failure: 1
+
+===== Turn 1: fill  FAIL =====
+[102.9秒, 生成2954トークン, 28.7 tok/s, 思考8612文字, prompt 981 tok, finish=stop]
+! 欠落: 'textbox "Name" [ref=e5]: Kepler'
+### Page
+- Page URL: http://lab.example/
+- Page Title: Lab Home
+### Snapshot
+```yaml
+- generic [ref=e1]:
+  - heading "Lab Home" [level=1] [ref=e2]
+  - textbox "Name" [ref=e5] [value="Kepler"]
+  - link "Docs" [ref=e3] [cursor=pointer]:
+    - /url: http://lab.example/docs
+```
+
+===== Turn 2: open docs  PASS =====
+[95.2秒, 生成2757トークン, 29.0 tok/s, 思考8931文字, prompt 1306 tok, finish=stop]
+### Page
+- Page URL: http://lab.example/docs
+- Page Title: Lab Docs
+### Snapshot
+```yaml
+- generic [ref=e6]:
+  - heading "Documentation" [level=1] [ref=e7]
+  - link "Lab Home" [ref=e8] [cursor=pointer]:
+    - /url: http://lab.example/
+```
+
+===== Turn 3: navigate home  PASS =====
+[217.6秒, 生成6267トークン, 28.8 tok/s, 思考19550文字, prompt 1576 tok, finish=stop]
+### Page
+- Page URL: http://lab.example/
+- Page Title: Lab Home
+### Snapshot
+```yaml
+- generic [ref=e1]:
+  - heading "Lab Home" [level=1] [ref=e2]
+  - textbox "Name" [ref=e5]
+  - link "Docs" [ref=e3] [cursor=pointer]:
+    - /url: http://lab.example/docs
+```
+
+===== Turn 4: fill again  PASS =====
+[198.7秒, 生成5723トークン, 28.8 tok/s, 思考16104文字, prompt 1888 tok, finish=stop]
+### Page
+- Page URL: http://lab.example/
+- Page Title: Lab Home
+### Snapshot
+```yaml
+- generic [ref=e1]:
+  - heading "Lab Home" [level=1] [ref=e2]
+  - textbox "Name" [ref=e5]: Galileo
+  - link "Docs" [ref=e3] [cursor=pointer]:
+    - /url: http://lab.example/docs
+```

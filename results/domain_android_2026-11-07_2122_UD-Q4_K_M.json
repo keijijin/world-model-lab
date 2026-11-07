@@ -1,0 +1,72 @@
+{
+  "id": "domain_android",
+  "description": "ノートの新規作成、入力、保存、開き直し",
+  "model": "Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf",
+  "quant": "UD-Q4_K_M",
+  "temperature": 0.6,
+  "seed": 1,
+  "started": "2026-11-07T21:07:54",
+  "finished": "2026-11-07T21:22:19",
+  "passed": 4,
+  "total": 4,
+  "first_failure": null,
+  "failed_turns": [],
+  "turns": [
+    {
+      "n": 1,
+      "name": "new",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 1\n**Current State:**\n[  0] | android.widget.TextView | text=\"Notes\" | bounds=[40,100][500,200]\n[  1] | android.widget.TextView | text=\"Empty\" | bounds=[40,260][800,360]\n[  2] | android.widget.Button | text=\"New note\" | bounds=[760,2000][1000,2160] | clickable\n\n**Action:**\n```json\n{\n  \"action_type\": \"click\",\n  \"index\": 2\n}\n```\n",
+      "seconds": 118.3,
+      "completion_tokens": 2973,
+      "prompt_tokens": 686,
+      "tokens_per_sec": 25.1,
+      "thinking_chars": 9226,
+      "finish_reason": "stop",
+      "observation": "[  0] | android.widget.ImageView | contentDescription=\"Back\" | bounds=[40,100][200,200] | clickable\n[  1] | android.widget.TextView | text=\"Untitled note\" | bounds=[200,100][800,200]\n[  2] | android.widget.EditText | text=\"\" | bounds=[40,260][1000,1900] | editable | focused\n[  3] | android.widget.Button | text=\"Save\" | bounds=[760,100][1000,200] | clickable"
+    },
+    {
+      "n": 2,
+      "name": "type",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 2\n**Current State:**\n[  0] | android.widget.EditText | text=\"\" hint=\"Title\" | bounds=[40,200][1000,320] | editable\n[  1] | android.widget.Button | text=\"Save\" | bounds=[800,400][1000,520] | clickable\n\n**Action:**\n```json\n{\n  \"action_type\": \"input_text\",\n  \"text\": \"Kepler note\",\n  \"index\": 0\n}\n```\n",
+      "seconds": 138.3,
+      "completion_tokens": 3956,
+      "prompt_tokens": 974,
+      "tokens_per_sec": 28.6,
+      "thinking_chars": 11780,
+      "finish_reason": "stop",
+      "observation": "[  0] | android.widget.EditText | text=\"Kepler note\" hint=\"Title\" | bounds=[40,200][1000,320] | editable | focused\n[  1] | android.widget.Button | text=\"Save\" | bounds=[800,400][1000,520] | clickable"
+    },
+    {
+      "n": 3,
+      "name": "save",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 3\n**Current State:**\n[  0] | android.widget.EditText | text=\"Kepler note\" hint=\"Title\" | bounds=[40,200][1000,320] | editable\n[  1] | android.widget.Button | text=\"Save\" | bounds=[800,400][1000,520] | clickable\n\n**Action:**\n```json\n{\n  \"action_type\": \"click\",\n  \"index\": 1\n}\n```\n",
+      "seconds": 176.6,
+      "completion_tokens": 5098,
+      "prompt_tokens": 1191,
+      "tokens_per_sec": 28.9,
+      "thinking_chars": 13891,
+      "finish_reason": "stop",
+      "observation": "[  0] | android.widget.TextView | text=\"Notes\" | bounds=[40,100][500,200]\n[  1] | android.widget.TextView | text=\"Kepler note\" | bounds=[40,260][800,360]\n[  2] | android.widget.Button | text=\"New note\" | bounds=[760,2000][1000,2160] | clickable"
+    },
+    {
+      "n": 4,
+      "name": "reopen",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 4\n**Current State:**\n[  0] | android.widget.TextView | text=\"Notes\" | bounds=[40,100][500,200]\n[  1] | android.widget.TextView | text=\"Kepler note\" | bounds=[40,260][800,360] | clickable\n[  2] | android.widget.Button | text=\"New note\" | bounds=[760,2000][1000,2160] | clickable\n\n**Action:**\n```json\n{\n  \"action_type\": \"click\",\n  \"index\": 1\n}\n```\n",
+      "seconds": 432.0,
+      "completion_tokens": 12184,
+      "prompt_tokens": 1513,
+      "tokens_per_sec": 28.2,
+      "thinking_chars": 37547,
+      "finish_reason": "stop",
+      "observation": "[  0] | android.widget.EditText | text=\"Kepler note\" hint=\"Title\" | bounds=[40,200][1000,320] | editable\n[  1] | android.widget.Button | text=\"Save\" | bounds=[800,400][1000,520] | clickable"
+    }
+  ]
+}

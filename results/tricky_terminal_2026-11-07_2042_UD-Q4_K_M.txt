@@ -1,0 +1,145 @@
+# tricky_terminal
+mv、パイプ、引用符、一時的な変数代入、サブシェル
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 24/24  first_failure: None
+
+===== Turn 1: mkdir  PASS =====
+[25.7秒, 生成579トークン, 22.5 tok/s, 思考1867文字, prompt 3148 tok, finish=stop]
+root@demo:/app# mkdir box && cd box
+root@demo:/app/box#
+
+===== Turn 2: printf  PASS =====
+[163.8秒, 生成4653トークン, 28.4 tok/s, 思考12723文字, prompt 3240 tok, finish=stop]
+root@demo:/app/box# printf 'one\ntwo\nthree\n' > nums.txt
+root@demo:/app/box#
+
+===== Turn 3: wc lines  PASS =====
+[113.9秒, 生成3201トークン, 28.1 tok/s, 思考8732文字, prompt 3334 tok, finish=stop]
+root@demo:/app/box# cat nums.txt | wc -l
+3
+root@demo:/app/box#
+
+===== Turn 4: wc bytes  PASS =====
+[35.3秒, 生成987トークン, 28.0 tok/s, 思考2322文字, prompt 3424 tok, finish=stop]
+root@demo:/app/box# cat nums.txt | wc -c
+14
+root@demo:/app/box#
+
+===== Turn 5: mv rename  PASS =====
+[32.5秒, 生成911トークン, 28.1 tok/s, 思考2536文字, prompt 3519 tok, finish=stop]
+root@demo:/app/box# echo hello > a.txt && mv a.txt b.txt
+root@demo:/app/box#
+
+===== Turn 6: cat old name  PASS =====
+[37.5秒, 生成1061トークン, 28.3 tok/s, 思考3014文字, prompt 3607 tok, finish=stop]
+root@demo:/app/box# cat a.txt
+cat: a.txt: No such file or directory
+root@demo:/app/box#
+
+===== Turn 7: cat new name  PASS =====
+[28.7秒, 生成801トークン, 27.9 tok/s, 思考2194文字, prompt 3698 tok, finish=stop]
+root@demo:/app/box# cat b.txt
+hello
+root@demo:/app/box#
+
+===== Turn 8: mv into missing dir  PASS =====
+[97.8秒, 生成2608トークン, 26.7 tok/s, 思考8308文字, prompt 3783 tok, finish=stop]
+root@demo:/app/box# mv b.txt sub/b.txt
+mv: cannot move 'b.txt' to 'sub/b.txt': No such file or directory
+root@demo:/app/box#
+
+===== Turn 9: still there  PASS =====
+[48.5秒, 生成1362トークン, 28.1 tok/s, 思考3699文字, prompt 3886 tok, finish=stop]
+root@demo:/app/box# cat b.txt
+hello
+root@demo:/app/box#
+
+===== Turn 10: mv into dir  PASS =====
+[52.3秒, 生成1481トークン, 28.3 tok/s, 思考4199文字, prompt 3977 tok, finish=stop]
+root@demo:/app/box# mkdir sub && mv b.txt sub/renamed.txt
+root@demo:/app/box#
+
+===== Turn 11: cat moved  PASS =====
+[25.0秒, 生成698トークン, 27.9 tok/s, 思考1939文字, prompt 4069 tok, finish=stop]
+root@demo:/app/box# cat sub/renamed.txt
+hello
+root@demo:/app/box#
+
+===== Turn 12: cat source gone  PASS =====
+[30.7秒, 生成855トークン, 27.9 tok/s, 思考2307文字, prompt 4155 tok, finish=stop]
+root@demo:/app/box# cat b.txt
+cat: b.txt: No such file or directory
+root@demo:/app/box#
+
+===== Turn 13: export  PASS =====
+[40.8秒, 生成1131トークン, 27.7 tok/s, 思考3135文字, prompt 4249 tok, finish=stop]
+root@demo:/app/box# export FOO=apple
+root@demo:/app/box#
+
+===== Turn 14: expand  PASS =====
+[29.8秒, 生成822トークン, 27.6 tok/s, 思考2076文字, prompt 4334 tok, finish=stop]
+root@demo:/app/box# echo "$FOO"
+apple
+root@demo:/app/box#
+
+===== Turn 15: single quotes  PASS =====
+[5.8秒, 生成145トークン, 25.0 tok/s, 思考310文字, prompt 4421 tok, finish=stop]
+root@demo:/app/box# echo '$FOO'
+$FOO
+root@demo:/app/box#
+
+===== Turn 16: prefix assign  PASS =====
+[138.2秒, 生成3807トークン, 27.6 tok/s, 思考13462文字, prompt 4514 tok, finish=stop]
+root@demo:/app/box# FOO=banana echo "$FOO"
+apple
+root@demo:/app/box#
+
+===== Turn 17: prefix does not persist  PASS =====
+[47.6秒, 生成1302トークン, 27.4 tok/s, 思考3726文字, prompt 4605 tok, finish=stop]
+root@demo:/app/box# echo "$FOO"
+apple
+root@demo:/app/box#
+
+===== Turn 18: braces  PASS =====
+[11.4秒, 生成301トークン, 26.5 tok/s, 思考700文字, prompt 4696 tok, finish=stop]
+root@demo:/app/box# echo "x${FOO}y"
+xappley
+root@demo:/app/box#
+
+===== Turn 19: pipe tr  PASS =====
+[38.1秒, 生成1055トークン, 27.7 tok/s, 思考2865文字, prompt 4795 tok, finish=stop]
+root@demo:/app/box# echo "$FOO" | tr a-z A-Z
+APPLE
+root@demo:/app/box#
+
+===== Turn 20: pipe missing  PASS =====
+[44.7秒, 生成1233トークン, 27.6 tok/s, 思考4070文字, prompt 4890 tok, finish=stop]
+root@demo:/app/box# cat missing.txt | wc -l
+cat: missing.txt: No such file or directory
+0
+root@demo:/app/box#
+
+===== Turn 21: stage overwrite  PASS =====
+[47.6秒, 生成1313トークン, 27.6 tok/s, 思考4144文字, prompt 5002 tok, finish=stop]
+root@demo:/app/box# echo NEW > new.txt && echo OLD > old.txt && mv new.txt old.txt
+root@demo:/app/box#
+
+===== Turn 22: cat overwritten  PASS =====
+[31.1秒, 生成874トークン, 28.1 tok/s, 思考2686文字, prompt 5097 tok, finish=stop]
+root@demo:/app/box# cat old.txt
+NEW
+root@demo:/app/box#
+
+===== Turn 23: cat moved-away  PASS =====
+[57.6秒, 生成1610トークン, 28.0 tok/s, 思考4736文字, prompt 5180 tok, finish=stop]
+root@demo:/app/box# cat new.txt
+cat: new.txt: No such file or directory
+root@demo:/app/box#
+
+===== Turn 24: subshell  PASS =====
+[47.8秒, 生成1354トークン, 28.3 tok/s, 思考3896文字, prompt 5276 tok, finish=stop]
+root@demo:/app/box# (cd sub && pwd) && pwd
+/app/box/sub
+/app/box
+root@demo:/app/box#

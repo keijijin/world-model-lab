@@ -1,0 +1,136 @@
+{
+  "id": "domain_search",
+  "description": "記憶の更新と、検索結果から本文への引き写し",
+  "model": "Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf",
+  "quant": "UD-Q4_K_M",
+  "temperature": 0.6,
+  "seed": 1,
+  "started": "2026-11-07T20:02:57",
+  "finished": "2026-11-07T20:12:39",
+  "passed": 7,
+  "total": 8,
+  "first_failure": 8,
+  "failed_turns": [
+    8
+  ],
+  "turns": [
+    {
+      "n": 1,
+      "name": "remember",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 1\n**Action:**\n```json\n{\n  \"name\": \"dict_memory\",\n  \"arguments\": {\n    \"operation\": \"add\",\n    \"dict\": {\n      \"comet\": \"halley\",\n      \"year\": \"1986\"\n    }\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state consistency with previous interactions in this session\n- Match the expected output format\n\nFirst",
+      "seconds": 76.3,
+      "completion_tokens": 1702,
+      "prompt_tokens": 7295,
+      "tokens_per_sec": 22.3,
+      "thinking_chars": 5611,
+      "finish_reason": "stop",
+      "observation": "Successfully added items of [comet, year] to memory."
+    },
+    {
+      "n": 2,
+      "name": "recall mixed",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 2\n**Action:**\n```json\n{\n  \"name\": \"dict_memory\",\n  \"arguments\": {\n    \"operation\": \"retrieve\",\n    \"key_list\": [\n      \"comet\",\n      \"missing\"\n    ]\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state consistency with previous interactions in this session\n- Match the expected output format\n\nFirst, thin",
+      "seconds": 26.1,
+      "completion_tokens": 712,
+      "prompt_tokens": 7599,
+      "tokens_per_sec": 27.3,
+      "thinking_chars": 1731,
+      "finish_reason": "stop",
+      "observation": "comet: halley\nmissing: Key not found"
+    },
+    {
+      "n": 3,
+      "name": "update",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 3\n**Action:**\n```json\n{\n  \"name\": \"dict_memory\",\n  \"arguments\": {\n    \"operation\": \"update\",\n    \"dict\": {\n      \"comet\": \"neowise\"\n    }\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state consistency with previous interactions in this session\n- Match the expected output format\n\nFirst, think step by st",
+      "seconds": 27.9,
+      "completion_tokens": 689,
+      "prompt_tokens": 7978,
+      "tokens_per_sec": 24.7,
+      "thinking_chars": 1653,
+      "finish_reason": "stop",
+      "observation": "Successfully updated items of [comet] in memory."
+    },
+    {
+      "n": 4,
+      "name": "recall new",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 4\n**Action:**\n```json\n{\n  \"name\": \"dict_memory\",\n  \"arguments\": {\n    \"operation\": \"retrieve\",\n    \"key_list\": [\n      \"comet\"\n    ]\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state consistency with previous interactions in this session\n- Match the expected output format\n\nFirst, think step by step to",
+      "seconds": 31.2,
+      "completion_tokens": 852,
+      "prompt_tokens": 8359,
+      "tokens_per_sec": 27.3,
+      "thinking_chars": 2021,
+      "finish_reason": "stop",
+      "observation": "comet: neowise"
+    },
+    {
+      "n": 5,
+      "name": "forget",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 5\n**Action:**\n```json\n{\n  \"name\": \"dict_memory\",\n  \"arguments\": {\n    \"operation\": \"remove\",\n    \"key_list\": [\n      \"comet\"\n    ]\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state consistency with previous interactions in this session\n- Match the expected output format\n\nFirst, think step by step to e",
+      "seconds": 24.9,
+      "completion_tokens": 665,
+      "prompt_tokens": 8769,
+      "tokens_per_sec": 26.7,
+      "thinking_chars": 1489,
+      "finish_reason": "stop",
+      "observation": "Successfully removed items of [comet] from memory."
+    },
+    {
+      "n": 6,
+      "name": "recall gone",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 6\n**Action:**\n```json\n{\n  \"name\": \"dict_memory\",\n  \"arguments\": {\n    \"operation\": \"retrieve\",\n    \"key_list\": [\n      \"comet\"\n    ]\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state consistency with previous interactions in this session\n- Match the expected output format\n\nFirst, think step by step to",
+      "seconds": 36.7,
+      "completion_tokens": 1005,
+      "prompt_tokens": 9176,
+      "tokens_per_sec": 27.4,
+      "thinking_chars": 2263,
+      "finish_reason": "stop",
+      "observation": "comet: Key not found"
+    },
+    {
+      "n": 7,
+      "name": "search light",
+      "passed": true,
+      "failures": [],
+      "user_preview": "### Turn 7\n**Action:**\n```json\n{\n  \"name\": \"web_search\",\n  \"arguments\": {\n    \"queries\": [\n      \"speed of light in vacuum exact value metres per second\"\n    ]\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state consistency with previous interactions in this session\n- Match the expected output format\n\nFirst, thi",
+      "seconds": 143.1,
+      "completion_tokens": 3945,
+      "prompt_tokens": 9620,
+      "tokens_per_sec": 27.6,
+      "thinking_chars": 9915,
+      "finish_reason": "stop",
+      "observation": "[1] https://en.wikipedia.org/wiki/Speed_of_light\nTitle: Speed of light - Wikipedia\nSnippet: The speed of light in vacuum, commonly denoted c, is a universal physical constant exactly equal to 299,792,458 metres per second (approximately 1 billion ...\n\n[2] https://physics.nist.gov/cgi-bin/cuu/Value?%23c\nTitle: speed of light in vacuum - CODATA Value - NIST\nSnippet: numerical value of speed of light in vacuum 299 792 458 m s-1. action, copy reference. Click here for correlation coefficient of this constant with other ...\n\n[3] https://www.nist.gov/pml/owm/si-units-length\nTitle: SI Units - Length | NIST\nSnippet: The metre is defined by taking the fixed numerical value of the speed of light in vacuum c to be 299792458 when expressed in the unit m s–1, where the ...\n\n[4] https://en.wikipedia.org/wiki/Metre\nTitle: Metre - Wikipedia\nSnippet: The metre, symbol m, is the SI unit of length. It is defined by taking the fixed numerical value of the speed of light in vacuum c to be 299792458 when ...\n\n[5] https://www.britannica.com/science/speed-of-light\nTitle: Speed of light | Definition, Symbol, Value, & Facts - Britannica\nSnippet: Speed of light, speed at which light waves propagate through different materials. In vacuum, the speed of light is 299,792,458 metres per ...\n\n[6] https://physics.nist.gov/cgi-bin/cuu/Value?c%7Csearch_for=light!in!vacuum!\nTitle: speed of light in vacuum - CODATA Value - NIST\nSnippet: speed of light in vacuum $c$ 299792458. m s-1. Note for reference: This is a defined constant. Exact value.\n\n[7] https://physics.stackexchange.com/questions/333309/why-is-the-speed-of-light-in-vacuum-a-constant-and-how-do-we-know-it-is-the-sam\nTitle: Why is the speed of light in vacuum a constant and how do we know ...\nSnippet: The speed of light in vacuum is a universal physical constant, denoted c, and is exactly equal to 299,792,458 metres per second.\n\n[8] https://imagine.gsfc.nasa.gov/science/objects/light1.html\nTitle: Light - Imagine the Universe! - NASA\nSnippet: Light is a form of energy that travels at a speed of 300,000 kilometers (186,000 miles) per second. That's 186,000 miles in just one second!\n\n[9] https://www.albert.io/blog/speed-of-light-formula-everything-you-need-to-know/\nTitle: The Speed of Light Formula: Everything You Need to Know - Albert.io\nSnippet: The speed of light in a vacuum is exactly 299,792,458 meters per second (m/s). This value is a fundamental constant in physics, denoted by the symbol \"c.\"\nDate: N/A\n\n[10] https://units.fandom.com/wiki/Speed_of_light\nTitle: Speed of light | Units of Measurement Wiki - Fandom\nSnippet: The speed of light in vacuum, commonly denoted c, is a universal physical constant important in many areas of physics. Its exact value is 299,792,458 metres ..."
+    },
+    {
+      "n": 8,
+      "name": "extract light",
+      "passed": false,
+      "failures": [
+        "前ターンから引き継げず: 'Speed of light - Wikipedia'"
+      ],
+      "url": "https://en.wikipedia.org/wiki/Speed_of_light",
+      "carry": [
+        "Speed of light - Wikipedia"
+      ],
+      "user_preview": "### Turn 8\n**Action:**\n```json\n{\n  \"name\": \"web_extractor\",\n  \"arguments\": {\n    \"urls\": [\n      \"https://en.wikipedia.org/wiki/Speed_of_light\"\n    ],\n    \"goal\": \"Quote the sentence that states the exact integer speed of light in vacuum, in metres per second.\"\n  }\n}\n```\nPlease analyze the input above and predict the realistic output/response that the environment would produce.\n\nRequirements:\n- Be precise and accurate in your prediction\n- Consider edge cases and error conditions\n- Maintain state",
+      "seconds": 215.3,
+      "completion_tokens": 5812,
+      "prompt_tokens": 10865,
+      "tokens_per_sec": 27.0,
+      "thinking_chars": 20469,
+      "finish_reason": "stop",
+      "observation": "Jump to content\n\nMain Menu\n\nMain Menu\n\nmove to sidebar hide\n\nSearch\n\n...\n\n# Speed of light\n\nFrom Wikipedia, the free encyclopedia\n\n...\n\nThe speed of light in vacuum, commonly denoted c, is a universal physical constant exactly equal to 299,792,458 metres per second (approximately 300,000 kilometres per second). It is exact because, by international agreement, a metre is defined as the length of the path travelled by light in vacuum during a time interval of 1/299792458 of a second.\n\n...\n\n## History\n\n[edit]\n\n...\n\n## See also\n\n[edit]\n\n...\n\n## References\n\n[edit]\n\n...\n\n## External links\n\n[edit]"
+    }
+  ]
+}

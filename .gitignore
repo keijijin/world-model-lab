@@ -2,4 +2,5 @@ models/
 *.gguf
 *.log
 __pycache__/
+*.partial.json
 .DS_Store

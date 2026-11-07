@@ -1,0 +1,194 @@
+# long_terminal
+33ターンでファイルと作業ディレクトリを追跡し、最初に崩れる地点を記録する
+model: Qwen-AgentWorld-35B-A3B-UD-Q4_K_M.gguf
+temperature: 0.6  seed: 1
+score: 32/33  first_failure: 15
+
+===== Turn 1: mkdir  PASS =====
+[29.4秒, 生成466トークン, 15.9 tok/s, 思考1454文字, prompt 3153 tok, finish=stop]
+root@demo:/app# mkdir -p lab/src lab/data && cd lab
+root@demo:/app/lab#
+
+===== Turn 2: write alpha  PASS =====
+[39.0秒, 生成1116トークン, 28.6 tok/s, 思考3456文字, prompt 3241 tok, finish=stop]
+root@demo:/app/lab# echo TOKEN_ALPHA > src/a.txt
+root@demo:/app/lab#
+
+===== Turn 3: write beta  PASS =====
+[142.5秒, 生成4076トークン, 28.6 tok/s, 思考11427文字, prompt 3337 tok, finish=stop]
+root@demo:/app/lab# printf 'TOKEN_BETA\nTOKEN_BETA\n' > src/b.txt
+root@demo:/app/lab#
+
+===== Turn 4: write gamma  PASS =====
+[41.5秒, 生成1171トークン, 28.2 tok/s, 思考3415文字, prompt 3433 tok, finish=stop]
+root@demo:/app/lab# echo TOKEN_GAMMA > data/c.txt
+root@demo:/app/lab#
+
+===== Turn 5: write delta  PASS =====
+[22.9秒, 生成656トークン, 28.7 tok/s, 思考1902文字, prompt 3521 tok, finish=stop]
+root@demo:/app/lab# echo TOKEN_DELTA > data/d.txt
+root@demo:/app/lab#
+
+===== Turn 6: ls src  PASS =====
+[98.8秒, 生成2852トークン, 28.9 tok/s, 思考8568文字, prompt 3602 tok, finish=stop]
+root@demo:/app/lab# ls src
+a.txt  b.txt
+root@demo:/app/lab#
+
+===== Turn 7: wc alpha  PASS =====
+[38.7秒, 生成1102トークン, 28.5 tok/s, 思考2798文字, prompt 3688 tok, finish=stop]
+root@demo:/app/lab# wc -c src/a.txt
+12 src/a.txt
+root@demo:/app/lab#
+
+===== Turn 8: wc beta lines  PASS =====
+[25.7秒, 生成734トークン, 28.6 tok/s, 思考1929文字, prompt 3778 tok, finish=stop]
+root@demo:/app/lab# wc -l src/b.txt
+2 src/b.txt
+root@demo:/app/lab#
+
+===== Turn 9: cat alpha  PASS =====
+[42.8秒, 生成1223トークン, 28.6 tok/s, 思考3491文字, prompt 3865 tok, finish=stop]
+root@demo:/app/lab# cat src/a.txt
+TOKEN_ALPHA
+root@demo:/app/lab#
+
+===== Turn 10: cat gamma delta  PASS =====
+[33.9秒, 生成957トークン, 28.2 tok/s, 思考2772文字, prompt 3952 tok, finish=stop]
+root@demo:/app/lab# cat data/c.txt data/d.txt
+TOKEN_GAMMA
+TOKEN_DELTA
+root@demo:/app/lab#
+
+===== Turn 11: cd src  PASS =====
+[68.3秒, 生成1961トークン, 28.7 tok/s, 思考5462文字, prompt 4042 tok, finish=stop]
+root@demo:/app/lab# cd src
+root@demo:/app/lab/src#
+
+===== Turn 12: cat alpha relative  PASS =====
+[39.0秒, 生成1113トークン, 28.5 tok/s, 思考3080文字, prompt 4121 tok, finish=stop]
+root@demo:/app/lab/src# cat a.txt
+TOKEN_ALPHA
+root@demo:/app/lab/src#
+
+===== Turn 13: cd data  PASS =====
+[37.5秒, 生成1062トークン, 28.3 tok/s, 思考2847文字, prompt 4205 tok, finish=stop]
+root@demo:/app/lab/src# cd ../data
+root@demo:/app/lab/data#
+
+===== Turn 14: cat gamma relative  PASS =====
+[32.3秒, 生成904トークン, 28.0 tok/s, 思考2464文字, prompt 4286 tok, finish=stop]
+root@demo:/app/lab/data# cat c.txt
+TOKEN_GAMMA
+root@demo:/app/lab/data#
+
+===== Turn 15: cd lab  FAIL =====
+[29.3秒, 生成832トークン, 28.4 tok/s, 思考2216文字, prompt 4373 tok, finish=stop]
+! 残存: 'root@demo:/app/lab/data#'
+root@demo:/app/lab/data# cd /app/lab
+root@demo:/app/lab#
+
+===== Turn 16: rename  PASS =====
+[45.6秒, 生成1297トークン, 28.4 tok/s, 思考3772文字, prompt 4460 tok, finish=stop]
+root@demo:/app/lab# mv src/a.txt src/a_renamed.txt
+root@demo:/app/lab#
+
+===== Turn 17: cat old alpha  PASS =====
+[43.9秒, 生成1231トークン, 28.0 tok/s, 思考3588文字, prompt 4546 tok, finish=stop]
+root@demo:/app/lab# cat src/a.txt
+cat: src/a.txt: No such file or directory
+root@demo:/app/lab#
+
+===== Turn 18: cat renamed  PASS =====
+[51.9秒, 生成1372トークン, 26.4 tok/s, 思考3866文字, prompt 4641 tok, finish=stop]
+root@demo:/app/lab# cat src/a_renamed.txt
+TOKEN_ALPHA
+root@demo:/app/lab#
+
+===== Turn 19: append  PASS =====
+[46.5秒, 生成1273トークン, 27.4 tok/s, 思考3782文字, prompt 4733 tok, finish=stop]
+root@demo:/app/lab# echo TOKEN_EPSILON >> src/a_renamed.txt
+root@demo:/app/lab#
+
+===== Turn 20: cat appended  PASS =====
+[64.1秒, 生成1803トークン, 28.1 tok/s, 思考5159文字, prompt 4822 tok, finish=stop]
+root@demo:/app/lab# cat src/a_renamed.txt
+TOKEN_ALPHA
+TOKEN_EPSILON
+root@demo:/app/lab#
+
+===== Turn 21: rm delta  PASS =====
+[28.8秒, 生成807トークン, 28.0 tok/s, 思考2298文字, prompt 4912 tok, finish=stop]
+root@demo:/app/lab# rm data/d.txt
+root@demo:/app/lab#
+
+===== Turn 22: cat delta  PASS =====
+[24.7秒, 生成695トークン, 28.1 tok/s, 思考1881文字, prompt 4993 tok, finish=stop]
+root@demo:/app/lab# cat data/d.txt
+cat: data/d.txt: No such file or directory
+root@demo:/app/lab#
+
+===== Turn 23: gamma remains  PASS =====
+[39.1秒, 生成1090トークン, 27.9 tok/s, 思考2961文字, prompt 5086 tok, finish=stop]
+root@demo:/app/lab# cat data/c.txt
+TOKEN_GAMMA
+root@demo:/app/lab#
+
+===== Turn 24: write zeta  PASS =====
+[50.7秒, 生成1408トークン, 27.7 tok/s, 思考4078文字, prompt 5186 tok, finish=stop]
+root@demo:/app/lab# mkdir -p nested/deep && echo TOKEN_ZETA > nested/deep/note.txt
+root@demo:/app/lab#
+
+===== Turn 25: find note  PASS =====
+[34.3秒, 生成956トークン, 27.9 tok/s, 思考2874文字, prompt 5283 tok, finish=stop]
+root@demo:/app/lab# find . -name note.txt
+./nested/deep/note.txt
+root@demo:/app/lab#
+
+===== Turn 26: rm nested  PASS =====
+[41.3秒, 生成1147トークン, 27.8 tok/s, 思考3258文字, prompt 5374 tok, finish=stop]
+root@demo:/app/lab# rm -r nested
+root@demo:/app/lab#
+
+===== Turn 27: cat note  PASS =====
+[35.1秒, 生成965トークン, 27.5 tok/s, 思考2730文字, prompt 5458 tok, finish=stop]
+root@demo:/app/lab# cat nested/deep/note.txt
+cat: nested/deep/note.txt: No such file or directory
+root@demo:/app/lab#
+
+===== Turn 28: beta remains  PASS =====
+[39.1秒, 生成1081トークン, 27.7 tok/s, 思考2936文字, prompt 5557 tok, finish=stop]
+root@demo:/app/lab# cat src/b.txt
+TOKEN_BETA
+TOKEN_BETA
+root@demo:/app/lab#
+
+===== Turn 29: renamed remains  PASS =====
+[18.6秒, 生成508トークン, 27.3 tok/s, 思考1415文字, prompt 5648 tok, finish=stop]
+root@demo:/app/lab# cat src/a_renamed.txt
+TOKEN_ALPHA
+TOKEN_EPSILON
+root@demo:/app/lab#
+
+===== Turn 30: ls data  PASS =====
+[40.7秒, 生成1126トークン, 27.7 tok/s, 思考3197文字, prompt 5736 tok, finish=stop]
+root@demo:/app/lab# ls data
+c.txt
+root@demo:/app/lab#
+
+===== Turn 31: overwrite gamma  PASS =====
+[43.7秒, 生成1209トークン, 27.6 tok/s, 思考3414文字, prompt 5822 tok, finish=stop]
+root@demo:/app/lab# echo TOKEN_ETA > data/c.txt
+root@demo:/app/lab#
+
+===== Turn 32: cat eta  PASS =====
+[36.0秒, 生成975トークン, 27.1 tok/s, 思考2675文字, prompt 5907 tok, finish=stop]
+root@demo:/app/lab# cat data/c.txt
+TOKEN_ETA
+root@demo:/app/lab#
+
+===== Turn 33: pwd  PASS =====
+[43.0秒, 生成1189トークン, 27.7 tok/s, 思考3201文字, prompt 5989 tok, finish=stop]
+root@demo:/app/lab# pwd
+/app/lab
+root@demo:/app/lab#

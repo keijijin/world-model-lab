@@ -1,0 +1,54 @@
+[
+  {
+    "label": "UD-Q4_K_M",
+    "file_quant": "UD-Q4_K_M",
+    "gib": null,
+    "load": true,
+    "reason": "起動中のサーバー",
+    "passed": 10,
+    "total": 10,
+    "first_failure": null,
+    "sec_per_turn": 44.2,
+    "tok_per_sec": 26.7
+  },
+  {
+    "label": "IQ4_XS",
+    "file_quant": "UD-IQ4_XS",
+    "file": "Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf",
+    "bytes": 17785036032,
+    "gib": 16.56,
+    "ram_gib": 36.0,
+    "load": true,
+    "reason": null,
+    "passed": 10,
+    "total": 10,
+    "first_failure": null,
+    "sec_per_turn": 40.8,
+    "tok_per_sec": 30.0
+  },
+  {
+    "label": "Q5",
+    "file_quant": "UD-Q5_K_M",
+    "file": "Qwen-AgentWorld-35B-A3B-UD-Q5_K_M.gguf",
+    "bytes": 26456194304,
+    "gib": 24.64,
+    "ram_gib": 36.0,
+    "load": true,
+    "reason": null,
+    "passed": 10,
+    "total": 10,
+    "first_failure": null,
+    "sec_per_turn": 47.1,
+    "tok_per_sec": 26.4
+  },
+  {
+    "label": "Q8",
+    "file_quant": "Q8_0",
+    "file": "Qwen-AgentWorld-35B-A3B-Q8_0.gguf",
+    "bytes": 36903140608,
+    "gib": 34.37,
+    "ram_gib": 36.0,
+    "load": false,
+    "reason": "GGUF 34.37 GiB は物理メモリ 36.00 GiB の 80% 以上"
+  }
+]

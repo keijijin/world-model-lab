@@ -1,0 +1,61 @@
+# quant_probe
+量子化比較用の短いターミナル（バイト数、mv、引用符、前置代入）
+model: Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf
+temperature: 0.6  seed: 1
+score: 10/10  first_failure: None
+
+===== Turn 1: mkdir  PASS =====
+[27.4秒, 生成651トークン, 23.7 tok/s, 思考2377文字, prompt 3148 tok, finish=stop]
+root@demo:/app# mkdir project && cd project
+root@demo:/app/project#
+
+===== Turn 2: write  PASS =====
+[19.1秒, 生成579トークン, 30.3 tok/s, 思考1990文字, prompt 3232 tok, finish=stop]
+root@demo:/app/project# echo 'hello world' > greeting.txt
+root@demo:/app/project#
+
+===== Turn 3: wc  PASS =====
+[44.6秒, 生成1371トークン, 30.7 tok/s, 思考3946文字, prompt 3319 tok, finish=stop]
+root@demo:/app/project# cat greeting.txt | wc -c
+12
+root@demo:/app/project#
+
+===== Turn 4: mv  PASS =====
+[20.3秒, 生成616トークン, 30.3 tok/s, 思考2073文字, prompt 3406 tok, finish=stop]
+root@demo:/app/project# mv greeting.txt hello.txt
+root@demo:/app/project#
+
+===== Turn 5: cat old  PASS =====
+[49.8秒, 生成1528トークン, 30.7 tok/s, 思考4516文字, prompt 3486 tok, finish=stop]
+root@demo:/app/project# cat greeting.txt
+cat: greeting.txt: No such file or directory
+root@demo:/app/project#
+
+===== Turn 6: cat new  PASS =====
+[50.3秒, 生成1535トークン, 30.5 tok/s, 思考4745文字, prompt 3575 tok, finish=stop]
+root@demo:/app/project# cat hello.txt
+hello world
+root@demo:/app/project#
+
+===== Turn 7: export  PASS =====
+[40.3秒, 生成1232トークン, 30.6 tok/s, 思考3860文字, prompt 3657 tok, finish=stop]
+root@demo:/app/project# export NAME=ada
+root@demo:/app/project#
+
+===== Turn 8: expand  PASS =====
+[18.8秒, 生成568トークン, 30.3 tok/s, 思考1658文字, prompt 3737 tok, finish=stop]
+root@demo:/app/project# echo "$NAME"
+ada
+root@demo:/app/project#
+
+===== Turn 9: literal  PASS =====
+[7.0秒, 生成206トークン, 29.2 tok/s, 思考642文字, prompt 3819 tok, finish=stop]
+root@demo:/app/project# echo '$NAME'
+$NAME
+root@demo:/app/project#
+
+===== Turn 10: prefix  PASS =====
+[129.9秒, 生成3943トークン, 30.4 tok/s, 思考13831文字, prompt 3906 tok, finish=stop]
+root@demo:/app/project# NAME=bob echo "$NAME"
+ada
+root@demo:/app/project#
